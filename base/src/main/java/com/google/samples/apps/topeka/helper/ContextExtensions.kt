@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Google Inc.
+ * Copyright 2017 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,4 +14,17 @@
  * limitations under the License.
  */
 
-include ':base', ':quiz', ':categories', ':installed', ':instant'
+package com.google.samples.apps.topeka.helper
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.google.samples.apps.topeka.persistence.TopekaDatabaseHelper
+
+const val TAG = "Topeka"
+
+fun Context.database() = TopekaDatabaseHelper.getInstance(this)
+
+fun Context.inflate(resource: Int, root: ViewGroup?, attachToRoot: Boolean): View =
+        LayoutInflater.from(this).inflate(resource, root, attachToRoot)
